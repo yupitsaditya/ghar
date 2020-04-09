@@ -1,0 +1,18 @@
+body{
+    /* background-color: aliceblue; */
+    /* padding: 20px; */
+    margin: 0;
+
+}
+
+.nav{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.action{
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 20px;
+}
