@@ -1,6 +1,4 @@
 body{
-    /* background-color: aliceblue; */
-    /* padding: 20px; */
     margin: 0;
 
 }
@@ -14,5 +12,10 @@ body{
     padding: 20px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 20px;
+    grid-gap: 80px;
+}
+
+.gender{
+    padding: 30px;
+    justify-items: space-evenly;
 }
