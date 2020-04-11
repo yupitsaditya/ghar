@@ -17,7 +17,18 @@
 <body>
     <div class="nav">
         <div style="font-size: 48px; padding: 20px;">GHAR</div>
+        {% with messages=get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert-danger">
+                        <p>
+                            {{ message }}
+                        </p>
+                    </div>
+                {% endfor %}
+            {% endif %}
 
+        {% endwith %}
         <div class="action">
             <a href="#"
                 class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">About</a>
