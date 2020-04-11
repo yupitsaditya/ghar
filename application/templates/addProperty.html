@@ -35,7 +35,7 @@
             </p>
             <p>
                 {{ form.startDate.label}}<br>
-                {{ form.startDate}}
+                {{ form.startDate(type_="date") }}
                 {% for error in form.startDate.errors %}
                     <span class="error-message">{{ error }}</span>
                 {% endfor %}
