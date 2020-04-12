@@ -21,9 +21,14 @@ class AddPropertyForm(FlaskForm):
         pEmail=Property.objects(email=email.data).first()
         if pEmail:
             raise ValidationError("Email is already in use. Pick another one")
-    
+    def validate_startDate(self, startDate):
+        if self.startDate.data is None:
+            raise ValidationError("")
+
     def validate_endDate(self, endDate):
-        # print(self.startDate.data > endDate.data)
+        if endDate.data is None:
+            raise ValidationError("")
+
         if self.startDate.data >= endDate.data:
             raise ValidationError("End date cant be before or same as start date")
     # def url_validator(url):
