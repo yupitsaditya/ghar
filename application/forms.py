@@ -1,7 +1,38 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, BooleanField, IntegerField, DateField
+from wtforms import StringField, PasswordField, SubmitField, BooleanField, IntegerField, DateField, SelectField,RadioField
 from wtforms.validators import DataRequired, Email, ValidationError, URL
 from application.models import Property
+
+# (value, string shown in the dropdown)
+choices = {
+    "foodPreference" :[
+        ('VEGAN','VEGAN'),
+        ('VEG','VEG'),
+        ('NON VEG','NON VEG'),
+        ('ANY','ANY'),
+    ],
+    "genderPreference":[
+        ('MALE','MALE'),
+        ('FEMALE','FEMALE'),
+        ('BOTH','BOTH'),
+    ],
+    "bedsAvailable" : [
+        ('1','1'),
+        ('2','2'),
+        ('3','3'),
+        ('4','4'),
+        ('5','5'),
+    ],
+    "roomateCount":[
+        ('0','0'),
+        ('1','1'),
+        ('2','2'),
+        ('3','3'),
+        ('4','4'),
+        ('5','5'),
+    ]
+
+}
 
 
 class AddPropertyForm(FlaskForm):
@@ -9,10 +40,10 @@ class AddPropertyForm(FlaskForm):
     mapsLocation        =   StringField("Google Maps Location",validators=[URL()])
     startDate           =   DateField("Start Date")
     endDate             =   DateField("End Date")
-    foodPreference      =   StringField("Food Preference",validators=[DataRequired()])
-    genderPreference    =   StringField("Gender Preference",validators=[DataRequired()])
-    bedsAvailable       =   IntegerField("Beds Available")
-    roommateCount       =   IntegerField("Number of Roommates")
+    foodPreference      =   RadioField("Food Preference",choices=choices["foodPreference"])
+    genderPreference    =   RadioField("Gender Preference",choices=choices["genderPreference"])
+    bedsAvailable       =   SelectField("Beds Available", choices=choices["bedsAvailable"])
+    roommateCount       =   SelectField("Number of Roommates", choices=choices["roomateCount"])
     additionalFeatures  =   StringField("Additional Features",validators=[DataRequired()])
     pricePerBed         =   IntegerField("Price/Bed")
     submit              =   SubmitField("Submit")
@@ -21,25 +52,12 @@ class AddPropertyForm(FlaskForm):
         pEmail=Property.objects(email=email.data).first()
         if pEmail:
             raise ValidationError("Email is already in use. Pick another one")
-    def validate_startDate(self, startDate):
-        if self.startDate.data is None:
-            raise ValidationError("")
+
 
     def validate_endDate(self, endDate):
-        if endDate.data is None:
-            raise ValidationError("")
+        print(self.startDate.data, endDate.data)
+        if self.startDate.data is not None and endDate.data is not None:
+            if self.startDate.data >= endDate.data:
+                raise ValidationError("End date cant be before or same as start date")
 
-        if self.startDate.data >= endDate.data:
-            raise ValidationError("End date cant be before or same as start date")
-    # def url_validator(url):
-    # try:
-    #     result = urlparse(url)
-    #     return all([result.scheme, result.netloc, result.path])
-    # except:
-    #     return False
-    # def validate_bedsAvailable(self, bedsAvailable):
-    #     if bedsAvailable.data is None:
-    #         return ValidationError("Please enter a number")
-    #     if not isinstance(bedsAvailable.data, int):
-    #         raise ValidationError("Need a number")
     
