@@ -8,6 +8,11 @@ def index():
     return render_template("index.html", index=True )
 
 
+@app.route("/listProperty", methods=['GET'])
+def listProperty():
+    print(len(Property.objects()))
+    return render_template("listProperty.html")
+
 @app.route("/addProperty",methods=['GET','POST'])
 def addProperty():
     form= AddPropertyForm()
