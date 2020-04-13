@@ -6,8 +6,8 @@ from wtforms.validators import DataRequired, Email, Length, EqualTo, ValidationE
 class Property(db.Document):
     email               =   db.StringField(max_length=50,validators=[DataRequired(),Email()])
     mapsLocation        =   db.StringField(validators=[DataRequired()])
-    startDate           =   db.StringField(max_length=50,validators=[DataRequired()])
-    endDate             =   db.StringField(max_length=50,validators=[DataRequired()])
+    startDate           =   db.DateTimeField(max_length=50,validators=[DataRequired()])
+    endDate             =   db.DateTimeField(max_length=50,validators=[DataRequired()])
     foodPreference      =   db.StringField(max_length=50,validators=[DataRequired()])
     genderPreference    =   db.StringField(max_length=50,validators=[DataRequired()])
     bedsAvailable       =   db.IntField(validators=[DataRequired()])
