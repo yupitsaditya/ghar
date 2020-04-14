@@ -7,11 +7,15 @@ from application.forms import AddPropertyForm
 def index():
     return render_template("index.html", index=True )
 
+@app.route("/login")
+def login():
+    return render_template("login.html", login=True )
+
 
 @app.route("/listProperty", methods=['GET'])
 def listProperty():
-    print(len(Property.objects()))
-    return render_template("listProperty.html")
+    properties = Property.objects.all()
+    return render_template("listProperty.html", properties=properties, property=True)
 
 @app.route("/addProperty",methods=['GET','POST'])
 def addProperty():
@@ -35,7 +39,7 @@ def addProperty():
         print("hello")
         flash("You have successfully added the property")
         return redirect(url_for("index"))
-    return render_template("addProperty.html", form=form)
+    return render_template("addProperty.html", form=form, addProperty=True)
 
 
 

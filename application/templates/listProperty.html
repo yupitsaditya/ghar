@@ -1,6 +1,14 @@
-{% include 'layout.html' %}
+{% extends 'layout.html' %}
 
 {% block content %}
 
-<h1>Property</h1>
+<!-- <div class="content" style="text-align: center;">
+    <h1 style="font-size: 150px;">WELCOME</h1>
+</div> -->
+
+
+{% for property in properties %}
+
+    <h1>{{ property.mapsLocation }}</h1>
+{% endfor %}
 {% endblock %}
