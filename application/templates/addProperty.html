@@ -6,74 +6,74 @@
     <form name="addProperty" action="" method="post" novalidate>
         {{ form.hidden_tag() }}
         <p>
-            {{ form.email.label}}<br>
-            {{ form.email}}
+            {{ form.email.label}}
             {% for error in form.email.errors %}
             <span class="error-message">{{ error }}</span>
-            {% endfor %}
+            {% endfor %}<br/>
+            {{ form.email}}
         </p>
         <p>
-            {{ form.mapsLocation.label}}<br>
-            {{ form.mapsLocation}}
+            {{ form.mapsLocation.label}}
             {% for error in form.mapsLocation.errors %}
             <span class="error-message">{{ error }}</span>
-            {% endfor %}
+            {% endfor %}<br/>
+            {{ form.mapsLocation}}
         </p>
         <p>
-            {{ form.startDate.label}}<br>
-            {{ form.startDate(type_="date") }}
+            {{ form.startDate.label}}
             {% for error in form.startDate.errors %}
             <span class="error-message">{{ error }}</span>
-            {% endfor %}
+            {% endfor %}<br/>
+            {{ form.startDate(type_="date") }}
         </p>
         <p>
-            {{ form.endDate.label}}<br>
-            {{ form.endDate}}
+            {{ form.endDate.label}}
             {% for error in form.endDate.errors %}
             <span class="error-message">{{ error }}</span>
-            {% endfor %}
+            {% endfor %}<br/>
+            {{ form.endDate}}
         </p>
         <p>
-            {{ form.foodPreference.label}}<br>
-            {{ form.foodPreference}}
+            {{ form.foodPreference.label}}
             {% for error in form.foodPreference.errors %}
             <span class="error-message">{{ error }}</span>
-            {% endfor %}
+            {% endfor %}<br/>
+            {{ form.foodPreference}}
         </p>
         <p>
-            {{ form.genderPreference.label}}<br>
-            {{ form.genderPreference}}
+            {{ form.genderPreference.label}}
             {% for error in form.genderPreference.errors %}
             <span class="error-message">{{ error }}</span>
-            {% endfor %}
+            {% endfor %}<br/>
+            {{ form.genderPreference}}
         </p>
         <p>
-            {{ form.bedsAvailable.label}}<br>
-            {{ form.bedsAvailable}}
+            {{ form.bedsAvailable.label}}
             {% for error in form.bedsAvailable.errors %}
             <span class="error-message">{{ error }}</span>
-            {% endfor %}
+            {% endfor %}<br/>
+            {{ form.bedsAvailable}}
         </p>
         <p>
-            {{ form.roommateCount.label}}<br>
-            {{ form.roommateCount}}
+            {{ form.roommateCount.label}}
             {% for error in form.roommateCount.errors %}
             <span class="error-message">{{ error }}</span>
-            {% endfor %}
+            {% endfor %}<br/>
+            {{ form.roommateCount}}
         </p>
         <p>
-            {{ form.additionalFeatures.label}}<br>
-            {{ form.additionalFeatures}}
+            {{ form.additionalFeatures.label}}
             {% for error in form.additionalFeatures.errors %}
             <span class="error-message">{{ error }}</span>
-            {% endfor %}
+            {% endfor %}<br/>
+            {{ form.additionalFeatures}}
         </p>
         <p>
-            {{ form.pricePerBed.label}}<br>
-            {{ form.pricePerBed}}
+            {{ form.pricePerBed.label}}
             {% for error in form.pricePerBed.errors %}
             <span class="error-message">{{ error }}</span>
-            {% endfor %}
+            {% endfor %}<br/>
+            {{ form.pricePerBed}}
         </p>
         <p>
             {{ form.submit() }}
