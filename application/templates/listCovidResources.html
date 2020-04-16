@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<!-- <div class="content" style="text-align: center;">
+    <h1 style="font-size: 150px;">WELCOME</h1>
+</div> -->
+
+
+{% for covid_resource in covid_resources  %}
+
+<div style="display:grid;padding: 8px; margin: 16px; border: 1px solid black; border-radius: 8px;">
+    <h2>From : {{ covid_resource.dateAvailableFrom }}</h2>
+    <h3>Resource: {{  covid_resource.resourceType }}</h3>
+</div>
+{% endfor %}
+{% endblock %}

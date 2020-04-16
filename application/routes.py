@@ -20,12 +20,19 @@ def addCovidResources():
         covidResources(email=email,resourceType=resourceType,dateAvailableFrom=dateAvailableFrom).save()
         flash("You have successfully added resource. Thank you for your support")
         return redirect(url_for("index"))
-    return render_template("addCovidResources.html", form=form, covidResources=True)
+    return render_template("addCovidResources.html", form=form, addCovidResources=True)
 
 @app.route("/listProperty", methods=['GET'])
 def listProperty():
     properties = Property.objects.all()
-    return render_template("listProperty.html", properties=properties, property=True)
+    return render_template("listProperty.html", properties=properties, listProperty=True)
+
+
+@app.route("/listCovidResources", methods=['GET'])
+def listCovidResources():
+    covid_resources = covidResources.objects.all()
+    print(covid_resources);
+    return render_template("listCovidResources.html", covid_resources=covid_resources, listCovidResources=True)
 
 @app.route("/addProperty",methods=['GET','POST'])
 def addProperty():
