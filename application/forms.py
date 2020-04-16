@@ -1,7 +1,9 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, BooleanField, IntegerField, DateField, SelectField,RadioField
+from wtforms import StringField, PasswordField, SubmitField, BooleanField, IntegerField, SelectField,RadioField
 from wtforms.validators import DataRequired, Email, ValidationError, URL
 from application.models import Property
+from wtforms.fields.html5 import DateField
+import re
 
 # (value, string shown in the dropdown)
 choices = {
@@ -36,17 +38,21 @@ choices = {
 
 
 class AddPropertyForm(FlaskForm):
+    # dt = DateField('DatePicker', format='%Y-%m-%d')
+
+
+
     email               =   StringField("Email",validators=[DataRequired(),Email()])
-    mapsLocation        =   StringField("Google Maps Location",validators=[URL()])
-    startDate           =   DateField("Start Date")
-    endDate             =   DateField("End Date")
-    foodPreference      =   RadioField("Food Preference",choices=choices["foodPreference"])
-    genderPreference    =   RadioField("Gender Preference",choices=choices["genderPreference"])
-    bedsAvailable       =   SelectField("Beds Available", choices=choices["bedsAvailable"])
-    roommateCount       =   SelectField("Number of Roommates", choices=choices["roomateCount"])
+    mapsLocation        =   StringField("Google Maps Location",validators=[DataRequired()])
+    startDate           =   DateField("Start Date",validators=[DataRequired()])
+    endDate             =   DateField("End Date",validators=[DataRequired()])
+    foodPreference      =   RadioField("Food Preference",choices=choices["foodPreference"],validators=[DataRequired()])
+    genderPreference    =   RadioField("Gender Preference",choices=choices["genderPreference"],validators=[DataRequired()])
+    bedsAvailable       =   SelectField("Beds Available", choices=choices["bedsAvailable"],validators=[DataRequired()])
+    roommateCount       =   SelectField("Number of Roommates", choices=choices["roomateCount"],validators=[DataRequired()])
     additionalFeatures  =   StringField("Additional Features",validators=[DataRequired()])
-    pricePerBed         =   IntegerField("Price/Bed")
-    submit              =   SubmitField("Submit")
+    pricePerBed         =   IntegerField("Price/Bed",validators=[DataRequired()])
+    submit              =   SubmitField("Submit",validators=[DataRequired()])
 
     def validate_email(self,email):
         pEmail=Property.objects(email=email.data).first()
@@ -55,9 +61,22 @@ class AddPropertyForm(FlaskForm):
 
 
     def validate_endDate(self, endDate):
-        print(self.startDate.data, endDate.data)
-        if self.startDate.data is not None and endDate.data is not None:
-            if self.startDate.data >= endDate.data:
-                raise ValidationError("End date cant be before or same as start date")
+        # print(self.startDate.data, endDate.data)
+        if self.startDate.data is not None and endDate.data is not None and self.startDate.data >= endDate.data:
+            raise ValidationError("End date cannot be before or same as start date")
 
-    
+    def validate_mapsLocation(self,mapsLocation):
+        # mapsRegex = "/^https?\:\/\/(www\.|maps\.)?google\.[a-z]+\/maps\/?\?([^&]+&)*(ll=-?[0-9]{1,2}\.[0-9]+,-?[0-9]{1,2}\.[0-9]+|q=[^&]+)+($|&)/";
+        # mapsRegex = re.compile(r'/^https?\:\/\/(www\.|maps\.)?google\.[a-z]+\/maps\/?\?([^&]+&)*(ll=-?[0-9]{1,2}\.[0-9]+,-?[0-9]{1,2}\.[0-9]+|q=[^&]+)+($|&)/') 
+        # mapsRegex=re.compile(r'^(http(s?)://)?maps\.google(\.|/).*/maps/.*$')
+        # mapsRegex1=re.compile(r'/google.com\/maps/')
+        # if not mapsRegex1.match(str(mapsLocation)):
+        #     raise ValidationError("Not a google maps location")
+        check1="google.com/maps"
+        check2="maps.google"
+        if check1 not in str(mapsLocation) and check2 not in str(mapsLocation):
+            raise ValidationError("Not a google maps location")
+
+    def validate_pricePerBed(self,pricePerBed):
+        if pricePerBed.data>20000 or pricePerBed.data<1:
+            raise ValidationError("Enter valid amount")
