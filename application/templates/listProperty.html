@@ -9,6 +9,27 @@
 
 {% for property in properties %}
 
-    <h1>{{ property.mapsLocation }}</h1>
+<div style="display:grid;padding: 8px; margin: 16px; border: 1px solid black; border-radius: 8px;">
+    <div style="display: grid;grid-template-columns: 1fr 1fr;">
+        <h2>From : {{ property.startDate.date() }}</h2>
+        <h2 style="justify-self: end;">To : {{ property.endDate.date() }}</h2>
+    </div>
+    <div style="display: grid;grid-template-columns: 1fr 1fr; justify-items: center;">
+        <h3><span style="font-size: 44px; padding: 4px;" class="material-icons">single_bed</span>Beds Available:
+            {{  property.bedsAvailable }}</h3>
+        <h3><span style="font-size: 44px;" class="material-icons">supervisor_account</span>Roommates:
+            {{  property.roommateCount }}</h3>
+    </div>
+    <div style="display: grid;grid-template-columns: 1fr 1fr; justify-items: center;">
+        <h3>Food preference: {{  property.foodPreference }}</h3>
+        <h3>Gender preference: {{  property.genderPreference }}</h3>
+    </div>
+    <div style="display: grid;grid-template-columns: 1fr 1fr;">
+
+        <a title="Google maps location" href="{{ property.mapsLocation }}" target="_blank"><span class="material-icons"
+                style="font-size: 44px;">location_on</span></a>
+        <h1 style="justify-self: end;">Price/bed : ${{ property.pricePerBed }}</h1>
+    </div>
+</div>
 {% endfor %}
 {% endblock %}
