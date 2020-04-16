@@ -3,77 +3,77 @@
 {% block content %}
 <div class="property-form" style="text-align: center;">
     <div style="font-size: 48px; padding: 20px;">Add property</div>
-    <form name="addProperty" action="" method="post" novalidate>
+    <form name="addProperty" action="" method="post" style="padding: 0% 20% 0 20%;" novalidate>
         {{ form.hidden_tag() }}
         <p>
-            {{ form.email.label}}
+            <b> {{ form.email.label}}</b>
             {% for error in form.email.errors %}
             <span class="error-message">{{ error }}</span>
-            {% endfor %}<br/>
-            {{ form.email}}
+            {% endfor %}<br />
+            {{ form.email(class_="form-control")}}
         </p>
         <p>
-            {{ form.mapsLocation.label}}
+            <b> {{ form.mapsLocation.label}}</b>
             {% for error in form.mapsLocation.errors %}
             <span class="error-message">{{ error }}</span>
-            {% endfor %}<br/>
-            {{ form.mapsLocation}}
+            {% endfor %}<br />
+            {{ form.mapsLocation(class_="form-control")}}
         </p>
         <p>
-            {{ form.startDate.label}}
+            <b> {{ form.startDate.label}}</b>
             {% for error in form.startDate.errors %}
             <span class="error-message">{{ error }}</span>
-            {% endfor %}<br/>
-            {{ form.startDate(type_="date") }}
+            {% endfor %}<br />
+            {{ form.startDate(class_="form-control") }}
         </p>
         <p>
-            {{ form.endDate.label}}
+            <b> {{ form.endDate.label}}</b>
             {% for error in form.endDate.errors %}
             <span class="error-message">{{ error }}</span>
-            {% endfor %}<br/>
-            {{ form.endDate}}
+            {% endfor %}<br />
+            {{ form.endDate(class_="form-control")}}
         </p>
         <p>
-            {{ form.foodPreference.label}}
+            <b> {{ form.foodPreference.label}}</b>
             {% for error in form.foodPreference.errors %}
             <span class="error-message">{{ error }}</span>
-            {% endfor %}<br/>
+            {% endfor %}<br />
             {{ form.foodPreference}}
         </p>
         <p>
-            {{ form.genderPreference.label}}
+            <b> {{ form.genderPreference.label}}</b>
             {% for error in form.genderPreference.errors %}
             <span class="error-message">{{ error }}</span>
-            {% endfor %}<br/>
+            {% endfor %}<br />
             {{ form.genderPreference}}
         </p>
         <p>
-            {{ form.bedsAvailable.label}}
+            <b> {{ form.bedsAvailable.label}}</b>
             {% for error in form.bedsAvailable.errors %}
             <span class="error-message">{{ error }}</span>
-            {% endfor %}<br/>
-            {{ form.bedsAvailable}}
+            {% endfor %}<br />
+            {{ form.bedsAvailable(class_="form-control")}}
         </p>
         <p>
-            {{ form.roommateCount.label}}
+            <b> {{ form.roommateCount.label}}</b>
             {% for error in form.roommateCount.errors %}
             <span class="error-message">{{ error }}</span>
-            {% endfor %}<br/>
-            {{ form.roommateCount}}
+            {% endfor %}<br />
+            {{ form.roommateCount(class_="form-control")}}
         </p>
         <p>
-            {{ form.additionalFeatures.label}}
+            <b> {{ form.additionalFeatures.label}}</b>
             {% for error in form.additionalFeatures.errors %}
             <span class="error-message">{{ error }}</span>
-            {% endfor %}<br/>
-            {{ form.additionalFeatures}}
+            {% endfor %}<br />
+            {{ form.additionalFeatures(class_="form-control")}}
         </p>
         <p>
-            {{ form.pricePerBed.label}}
+            <b> {{ form.pricePerBed.label}}</b>
             {% for error in form.pricePerBed.errors %}
             <span class="error-message">{{ error }}</span>
-            {% endfor %}<br/>
-            {{ form.pricePerBed}}
+            {% endfor %}<br />
+            {{ form.pricePerBed(class_="form-control")}}
         </p>
         <p>
             {{ form.submit() }}
