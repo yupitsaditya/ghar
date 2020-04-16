@@ -15,5 +15,7 @@ class Property(db.Document):
     additionalFeatures  =   db.StringField(max_length=50,validators=[DataRequired()])
     pricePerBed         =   db.IntField(validators=[DataRequired()])
 
-
-    
+class covidResources(db.Document):
+    email               =   db.StringField(max_length=50,validators=[DataRequired(),Email()])
+    resourceType        =   db.StringField(validators=[DataRequired()])
+    dateAvailableFrom   =   db.DateTimeField(max_length=50,validators=[DataRequired()])   

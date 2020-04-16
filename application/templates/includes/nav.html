@@ -5,7 +5,8 @@
                 <li class="nav-item"><a href="/addProperty" class="nav-link {% if addProperty %}active{% endif %}">Add property</a></li>
                 <li class="nav-item"><a href="/listProperty" class="nav-link {% if property %}active{% endif %}">Properties</a></li>
                 <!-- <li class="nav-item"><a href="#" class="nav-link {% if enrollment %}active{% endif %}">Enrollment</a></li>  -->
-
+                <li class="nav-item"><a href="/addCovidResources" class="nav-link {% if covidResources %}active{% endif %}">Covid Resources</a></li>
+                
                 {% if not session['username'] %}
                 <li class="nav-item"><a href="/login" class="nav-link {% if login %}active{% endif %}">Login</a></li>
                 {% else %}

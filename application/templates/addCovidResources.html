@@ -1,0 +1,35 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+    <h1 style="font-size: 80px;text-align: center;">Covid Resources</h1>
+    <div class="property-form" style="text-align: center;">
+        <form name="addResource" action="" method="post" novalidate>
+            {{ form.hidden_tag() }}
+            <p>
+                {{ form.email.label}}<br>
+                {{ form.email}}
+                {% for error in form.email.errors %}
+                <span class="error-message">{{ error }}</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.resourceType.label}}<br>
+                {{ form.resourceType(type_="date") }}
+                {% for error in form.resourceType.errors %}
+                <span class="error-message">{{ error }}</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.dateAvailableFrom.label}}<br>
+                {{ form.dateAvailableFrom}}
+                {% for error in form.dateAvailableFrom.errors %}
+                <span class="error-message">{{ error }}</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.submit() }}
+            </p>
+    
+        </form>
+{% endblock %}

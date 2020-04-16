@@ -1,7 +1,7 @@
 from application import app, db
 from flask import render_template, redirect, flash, url_for
-from application.models import Property
-from application.forms import AddPropertyForm
+from application.models import Property, covidResources
+from application.forms import AddPropertyForm, CovidResourcesForm
 @app.route("/")
 @app.route("/index")
 def index():
@@ -10,7 +10,17 @@ def index():
 @app.route("/login")
 def login():
     return render_template("login.html", login=True )
-
+@app.route("/addCovidResources",methods=['GET','POST'])
+def addCovidResources():
+    form= CovidResourcesForm()
+    if form.validate_on_submit():
+        email                       =   form.email.data
+        resourceType                =   form.resourceType.data
+        dateAvailableFrom           =   form.dateAvailableFrom.data
+        covidResources(email=email,resourceType=resourceType,dateAvailableFrom=dateAvailableFrom).save()
+        flash("You have successfully added resource. Thank you for your support")
+        return redirect(url_for("index"))
+    return render_template("addCovidResources.html", form=form, covidResources=True)
 
 @app.route("/listProperty", methods=['GET'])
 def listProperty():

@@ -33,6 +33,11 @@ choices = {
         ('3','3'),
         ('4','4'),
         ('5','5'),
+    ],
+    "resourceType":[
+        ('Medicine','Medicine'),
+        ('Food','Food'),
+        ('Room','Room')
     ]
 
 }
@@ -81,3 +86,9 @@ class AddPropertyForm(FlaskForm):
     def validate_pricePerBed(self,pricePerBed):
         if pricePerBed.data>20000 or pricePerBed.data<1:
             raise ValidationError("Enter valid amount")
+
+class CovidResourcesForm(FlaskForm):
+    email                       =   StringField("Email",validators=[DataRequired(),Email()])
+    resourceType                =   SelectField("Selecte Resource Type", choices=choices["resourceType"],validators=[DataRequired()])
+    dateAvailableFrom           =   DateField("Date Available From",validators=[DataRequired()])
+    submit                      =   SubmitField("Submit",validators=[DataRequired()])
