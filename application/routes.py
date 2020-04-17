@@ -10,6 +10,13 @@ def index():
 @app.route("/login")
 def login():
     return render_template("login.html", login=True )
+
+
+@app.route("/covidHelp")
+def covidHelp():
+    return render_template("covidHelp.html", covidHelp=True )
+
+
 @app.route("/addCovidResources",methods=['GET','POST'])
 def addCovidResources():
     form= CovidResourcesForm()

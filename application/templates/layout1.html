@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ghar</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/main.css')}}"/>
+</head>
+<body>
+<div class="text-center">
+    <div class="content" style="text-align: center;">
+        <!-- <h1 style="font-size: 52px;">GHAR</h1> -->
+        <img src="../static/images/logo.jpeg" width="100px" alt="EasyLease">
+    </div>
+</div>
+<div class="container">
+    {% include "includes/nav1.html" %}
+
+    {% if session['username'] %}
+    <span class="user">Welcome, {{ session['username'] }}</span>
+    {% endif %}
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{category}}">
+                    <p>{{ message }}</p>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    {% block content %}
+    {% endblock %}
+    
+    {% include "includes/footer.html" %}
+</div>
+    
+</body>
+</html>    
