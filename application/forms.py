@@ -92,3 +92,12 @@ class CovidResourcesForm(FlaskForm):
     resourceType                =   SelectField("Selecte Resource Type", choices=choices["resourceType"],validators=[DataRequired()])
     dateAvailableFrom           =   DateField("Date Available From",validators=[DataRequired()])
     submit                      =   SubmitField("Submit",validators=[DataRequired()])
+
+
+class CovidLoginForm(FlaskForm):
+    email               =   StringField("Email",validators=[DataRequired(),Email()])
+    name                =   StringField("Name",validators=[DataRequired()])
+    age                 =   IntegerField("Age",validators=[DataRequired()])
+    locationZipCode     =   IntegerField("Zip Code of your Work Location",validators=[DataRequired()])
+    idNumber            =   IntegerField("ID Number",validators=[DataRequired()])
+    submit              =   SubmitField("Submit",validators=[DataRequired()])

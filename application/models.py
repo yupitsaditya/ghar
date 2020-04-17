@@ -19,3 +19,11 @@ class covidResources(db.Document):
     email               =   db.StringField(max_length=50,validators=[DataRequired(),Email()])
     resourceType        =   db.StringField(validators=[DataRequired()])
     dateAvailableFrom   =   db.DateTimeField(max_length=50,validators=[DataRequired()])   
+
+class covidLogin(db.Document):
+    email               =   db.StringField(max_length=50,validators=[DataRequired(),Email()])
+    name                =   db.StringField(max_length=50,validators=[DataRequired()])
+    age                 =   db.IntField(validators=[DataRequired()])
+    locationZipCode     =   db.IntField(validators=[DataRequired()])
+    idNumber            =   db.IntField(validators=[DataRequired()])
+
