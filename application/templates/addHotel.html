@@ -1,0 +1,125 @@
+{% extends 'layout1.html' %}
+
+{% block content %}
+<div class="property-form" style="text-align: center;">
+    <div style="font-size: 48px; padding: 20px;">Enter Hotel Details</div>
+    <form name="addProperty" action="" method="post" style="padding: 0% 20% 0 20%;" novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+            <b> {{ form.email.label}}</b>
+            {% for error in form.email.errors %}
+            <span class="error-message">{{ error }}</span>
+            {% endfor %}<br />
+            {{ form.email(class_="form-control")}}
+        </p>
+        <p>
+            <b> {{ form.mapsLocation.label}}</b>
+            {% for error in form.mapsLocation.errors %}
+            <span class="error-message">{{ error }}</span>
+            {% endfor %}<br />
+            {{ form.mapsLocation(class_="form-control")}}
+        </p>
+        
+        
+        
+       
+        <p>
+            <b> {{ form.roomsAvailable.label}}</b>
+            {% for error in form.roomsAvailable.errors %}
+            <span class="error-message">{{ error }}</span>
+            {% endfor %}<br />
+            {{ form.roomsAvailable(class_="form-control")}}
+        </p>
+        
+        <p>
+            <b> {{ form.additionalFeatures.label}}</b>
+            {% for error in form.additionalFeatures.errors %}
+            <span class="error-message">{{ error }}</span>
+            {% endfor %}<br />
+            {{ form.additionalFeatures(class_="form-control")}}
+        </p>
+        <p>
+            <b> {{ form.pricePerRoom.label}}</b>
+            {% for error in form.pricePerRoom.errors %}
+            <span class="error-message">{{ error }}</span>
+            {% endfor %}<br />
+            {{ form.pricePerRoom(class_="form-control")}}
+        </p>
+        <p>
+            {{ form.submit() }}
+        </p>
+
+    </form>
+    <!-- <form action="#">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" type="text" id="sd">
+                <label class="mdl-textfield__label" for="sd">Start date</label>
+            </div>
+            <br>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" type="text" id="ed">
+                <label class="mdl-textfield__label" for="ed">End date</label>
+            </div>
+            <br>
+            <div class="gender">
+                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-1">
+                    <input type="radio" id="option-1" class="mdl-radio__button" name="gender-options" value="1" checked>
+                    <span class="mdl-radio__label">Male</span>
+                </label>
+                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-2">
+                    <input type="radio" id="option-2" class="mdl-radio__button" name="gender-options" value="2">
+                    <span class="mdl-radio__label">Female</span>
+                </label>
+                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-3">
+                    <input type="radio" id="option-3" class="mdl-radio__button" name="gender-options" value="3">
+                    <span class="mdl-radio__label">Both</span>
+                </label>
+            </div>
+            <div class="food">
+                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-4">
+                    <input type="radio" id="option-4" class="mdl-radio__button" name="food-option" value="4" checked>
+                    <span class="mdl-radio__label">Vegan</span>
+                </label>
+                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-5">
+                    <input type="radio" id="option-5" class="mdl-radio__button" name="food-option" value="5">
+                    <span class="mdl-radio__label">Veg</span>
+                </label>
+                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-6">
+                    <input type="radio" id="option-6" class="mdl-radio__button" name="food-option" value="6">
+                    <span class="mdl-radio__label">Non veg</span>
+                </label>
+                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-7">
+                    <input type="radio" id="option-7" class="mdl-radio__button" name="food-option" value="7">
+                    <span class="mdl-radio__label">Any</span>
+                </label>
+            </div>
+            <br>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="sample4">
+                <label class="mdl-textfield__label" for="beds">Number of beds</label>
+                <span class="mdl-textfield__error">Input is not a number!</span>
+            </div>
+            <br>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" type="text" id="roomates">
+                <label class="mdl-textfield__label" for="roomates">Number of roomates</label>
+            </div>
+            <br>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" type="text" id="additional-features">
+                <label class="mdl-textfield__label" for="additional-features">additional features</label>
+            </div>
+            <br>
+            
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="sample4">
+                <label class="mdl-textfield__label" for="sample4">Price per bed</label>
+                <span class="mdl-textfield__error">Input is not a number!</span>
+            </div>
+            <br>
+            <input type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" />
+        </form> -->
+</div>
+
+
+{% endblock %}

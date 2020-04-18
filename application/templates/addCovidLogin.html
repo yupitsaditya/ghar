@@ -1,8 +1,8 @@
-{% extends 'layout.html' %}
+{% extends 'layout1.html' %}
 
 {% block content %}
 
-<h1 style="font-size: 48px; padding: 20px;text-align: center;">Covid Resources</h1>
+<h1 style="font-size: 48px; padding: 20px;text-align: center;">Register Here</h1>
 <div class="property-form" style="text-align: center;">
     <form name="addResource" action="" style="padding: 0% 20% 0 20%;" method="post" novalidate>
         {{ form.hidden_tag() }}
@@ -26,6 +26,13 @@
             <span class="error-message">{{ error }}</span>
             {% endfor %}
             {{ form.age(class_="form-control")}}
+        </p>
+        <p>
+            <b> {{ form.languageSpoken.label}}</b>
+            {% for error in form.languageSpoken.errors %}
+            <span class="error-message">{{ error }}</span>
+            {% endfor %}
+            {{ form.languageSpoken(class_="form-control")}}
         </p>
         <p>
             <b> {{ form.locationZipCode.label}}</b>

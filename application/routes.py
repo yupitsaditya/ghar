@@ -1,9 +1,10 @@
 from application import app, db
 from flask import render_template, redirect, flash, url_for
-from application.models import Property, covidResources, covidLogin
-from application.forms import AddPropertyForm, CovidResourcesForm, CovidLoginForm
-@app.route("/")
-@app.route("/index")
+from application.models import Property, covidResources, covidLogin,HotelProperty
+from application.forms import AddPropertyForm, CovidResourcesForm, CovidLoginForm,AddHotelPropertyForm
+# @app.route("/")
+# @app.route("/index")
+@app.route("/sublease")
 def index():
     return render_template("index.html", index=True )
 
@@ -11,7 +12,8 @@ def index():
 def login():
     return render_template("login.html", login=True )
 
-
+@app.route("/")
+@app.route("/index")
 @app.route("/covidHelp")
 def covidHelp():
     return render_template("covidHelp.html", covidHelp=True )
@@ -30,7 +32,7 @@ def addCovidResources():
     return render_template("addCovidResources.html", form=form, addCovidResources=True)
 
 @app.route("/addCovidLogin",methods=['GET','POST'])
-def adddCovidLogin():
+def addCovidLogin():
     form= CovidLoginForm()
     if form.validate_on_submit():
         email               =   form.email.data
@@ -42,6 +44,26 @@ def adddCovidLogin():
         flash("You have been successfully added to the database. We will find you help.")
         return redirect(url_for("index"))
     return render_template("addCovidLogin.html", form=form, addCovidLogin=True)
+
+@app.route("/addHotel",methods=['GET','POST'])
+def addHotel():
+    form= AddHotelPropertyForm()
+    if form.validate_on_submit():
+        email               =   form.email.data
+        mapsLocation                =   form.mapsLocation.data
+        roomsAvailable                 =   form.roomsAvailable.data
+        additionalFeatures     =   form.additionalFeatures.data
+        pricePerRoom            =   form.pricePerRoom.data
+        HotelProperty(email=email,mapsLocation=mapsLocation,roomsAvailable=roomsAvailable,additionalFeatures=additionalFeatures, pricePerRoom=pricePerRoom).save()
+        flash("You have been successfully added to the database. We will find you help.")
+        return redirect(url_for("covidHelp"))
+    return render_template("addHotel.html", form=form, addHotel=True)
+
+@app.route("/listHotel", methods=['GET'])
+def listHotel():
+    hotels = HotelProperty.objects.all()
+    return render_template("listHotel.html", hotels=hotels, listHotel=True)
+
 
 @app.route("/listProperty", methods=['GET'])
 def listProperty():
