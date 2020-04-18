@@ -97,7 +97,7 @@ class CovidLoginForm(FlaskForm):
     email               =   StringField("Email",validators=[DataRequired(),Email()])
     name                =   StringField("Name",validators=[DataRequired()])
     age                 =   IntegerField("Age",validators=[DataRequired()])
-    languageSpoken                 =   IntegerField("Language Spoken",validators=[DataRequired()])
+    languageSpoken      =   StringField("Language Spoken",validators=[DataRequired()])
     locationZipCode     =   IntegerField("Zip Code of your Work Location",validators=[DataRequired()])
     idNumber            =   IntegerField("ID Number",validators=[DataRequired()])
     submit              =   SubmitField("Submit",validators=[DataRequired()])

@@ -4,9 +4,9 @@ from application.models import Property, covidResources, covidLogin,HotelPropert
 from application.forms import AddPropertyForm, CovidResourcesForm, CovidLoginForm,AddHotelPropertyForm
 # @app.route("/")
 # @app.route("/index")
-@app.route("/sublease")
-def index():
-    return render_template("index.html", index=True )
+# @app.route("/sublease")
+# def index():
+#     return render_template("index.html", index=True )
 
 @app.route("/login")
 def login():
@@ -28,7 +28,7 @@ def addCovidResources():
         dateAvailableFrom           =   form.dateAvailableFrom.data
         covidResources(email=email,resourceType=resourceType,dateAvailableFrom=dateAvailableFrom).save()
         flash("You have successfully added resource. Thank you for your support")
-        return redirect(url_for("index"))
+        return redirect(url_for("covidHelp"))
     return render_template("addCovidResources.html", form=form, addCovidResources=True)
 
 @app.route("/addCovidLogin",methods=['GET','POST'])
@@ -42,7 +42,7 @@ def addCovidLogin():
         idNumber            =   form.idNumber.data
         covidLogin(email=email,name=name,age=age,locationZipCode=locationZipCode, idNumber=idNumber).save()
         flash("You have been successfully added to the database. We will find you help.")
-        return redirect(url_for("index"))
+        return redirect(url_for("covidHelp"))
     return render_template("addCovidLogin.html", form=form, addCovidLogin=True)
 
 @app.route("/addHotel",methods=['GET','POST'])
