@@ -1,0 +1,32 @@
+{% extends 'layout1.html' %}
+
+{% block content %}
+
+<!-- <div class="content" style="text-align: center;">
+    <h1 style="font-size: 150px;">WELCOME</h1>
+</div> -->
+
+
+{% for property in hotels %}
+
+<div style="display:grid;padding: 8px; margin: 16px; border: 1px solid black; border-radius: 8px;">
+    
+    <div style="display: grid;grid-template-columns: 1fr 1fr; justify-items: center;">
+        <h3><span style="font-size: 44px; padding: 4px;" class="material-icons">single_bed</span>Rooms Available:
+            {{  property.roomsAvailable }}</h3>
+        <h3><span style="font-size: 44px;" class="material-icons">supervisor_account</span>Rooms:
+            {{  property.roomsAvailable }}</h3>
+    </div>
+    <!-- <div style="display: grid;grid-template-columns: 1fr 1fr; justify-items: center;">
+        <h3>Food preference: {{  property.foodPreference }}</h3>
+        <h3>Gender preference: {{  property.genderPreference }}</h3>
+    </div> -->
+    <div style="display: grid;grid-template-columns: 1fr 1fr;">
+
+        <a title="Google maps location" href="{{ property.mapsLocation }}" target="_blank"><span class="material-icons"
+                style="font-size: 44px;">location_on</span></a>
+        <h1 style="justify-self: end;">Price/room : ${{ property.pricePerRoom }}</h1>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}

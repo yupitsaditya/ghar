@@ -36,8 +36,7 @@ choices = {
     ],
     "resourceType":[
         ('Medicine','Medicine'),
-        ('Food','Food'),
-        ('Room','Room')
+        ('Food','Food')
     ]
 
 }
@@ -98,6 +97,24 @@ class CovidLoginForm(FlaskForm):
     email               =   StringField("Email",validators=[DataRequired(),Email()])
     name                =   StringField("Name",validators=[DataRequired()])
     age                 =   IntegerField("Age",validators=[DataRequired()])
+    languageSpoken                 =   IntegerField("Language Spoken",validators=[DataRequired()])
     locationZipCode     =   IntegerField("Zip Code of your Work Location",validators=[DataRequired()])
     idNumber            =   IntegerField("ID Number",validators=[DataRequired()])
+    submit              =   SubmitField("Submit",validators=[DataRequired()])
+
+class AddHotelPropertyForm(FlaskForm):
+    # dt = DateField('DatePicker', format='%Y-%m-%d')
+
+
+
+    email               =   StringField("Email",validators=[DataRequired(),Email()])
+    mapsLocation        =   StringField("Google Maps Location",validators=[DataRequired()])
+    # startDate           =   DateField("Start Date",validators=[DataRequired()])
+    # endDate             =   DateField("End Date",validators=[DataRequired()])
+    # foodPreference      =   RadioField("Food Preference",choices=choices["foodPreference"],validators=[DataRequired()])
+    # genderPreference    =   RadioField("Gender Preference",choices=choices["genderPreference"],validators=[DataRequired()])
+    roomsAvailable       =   IntegerField("Rooms Available",validators=[DataRequired()])
+    # roommateCount       =   SelectField("Number of Roommates", choices=choices["roomateCount"],validators=[DataRequired()])
+    additionalFeatures  =   StringField("Additional Features",validators=[DataRequired()])
+    pricePerRoom         =   IntegerField("Price/Bed",validators=[DataRequired()])
     submit              =   SubmitField("Submit",validators=[DataRequired()])
